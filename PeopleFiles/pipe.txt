@@ -1,0 +1,4 @@
+Hickory | Hall | Male | red | 03/15/1900
+Smith | John | Male | brown | 02/14/1980
+Doe | Jane | Female | black | 01/02/1990
+Gates | Bill | Male | purple | DateOfBirth
