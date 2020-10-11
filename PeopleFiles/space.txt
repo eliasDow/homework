@@ -1,2 +1,2 @@
-LastName FirstName Gender FavoriteColor DateOfBirth
-LastName FirstName Gender FavoriteColor DateOfBirth
+LastName FirstName female FavoriteColor 02/06/2000
+LastName FirstName female FavoriteColor 02/02/2005
