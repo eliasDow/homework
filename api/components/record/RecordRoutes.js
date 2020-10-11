@@ -10,7 +10,7 @@ router.post('/records', bodyParser.text({type: '*/*'}), async (req, res) => {
     if (req.body.split(separator).length !== 5) {
         res.status(400).send('Error. Bad request - invalid field length.')
     } else {
-        let person = ParseFiles.parsePeople(separator, [req.body]);
+        let person = ParseFiles.parsePeople([req.body]);
         data.push(person[0]);
         res.send('Added new person');
     }

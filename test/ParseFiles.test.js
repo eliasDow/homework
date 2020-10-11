@@ -11,7 +11,7 @@ const testPeople = [
 
 describe('parsePeople()', function () {
     it('Parse people', function () {      
-        const people = ParseFiles.parsePeople('|', testPeople);
+        const people = ParseFiles.parsePeople(testPeople);
         expect(people[0].lastName).to.be.equal('aaa');
     });
 });
@@ -26,9 +26,16 @@ describe('readFile()', function () {
 
 describe('combinePeople()', function () {
     it('Combine people function', async function () {
-        const combined = await ParseFiles.combinePeople();
+        const combined = await ParseFiles.combinePeople(['comma.txt', 'pipe.txt', 'space.txt']);
         expect(combined.length).to.be.greaterThan(0);
         expect(combined[0].lastName).to.be.equal('UnitTestLastName');
+    });
+});
+
+describe('run()', function () {
+    it('Test run function that returns global data', async function () {
+        const allPeople = await ParseFiles.run(['comma.txt', 'pipe.txt', 'space.txt']);
+        expect(allPeople.length).to.be.greaterThan(0);
     });
 });
 

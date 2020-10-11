@@ -11,16 +11,21 @@ const testPeople = [
 
 describe('sortPeople()', function () {
     it('Sort people by last name ascending', function () {
-        const people = ParseFiles.parsePeople('|', testPeople);
+        const people = ParseFiles.parsePeople( testPeople);
         const sortedPeople = RecordService.sortPeople(people, 'lastName', true)
         expect(sortedPeople[0].lastName).to.be.equal('aaa');
     });
+    it('Sort people by DOB ascending', function () {
+        const people = ParseFiles.parsePeople(testPeople);
+        const sortedPeople = RecordService.sortPeople(people, 'dateOfBirth', true)
+        expect(sortedPeople[0].lastName).to.be.equal('Jane');
+    });
 });
 
-describe('sortPeople()', function () {
-    it('Sort people by DOB ascending', function () {
-        const people = ParseFiles.parsePeople('|', testPeople);
-        const sortedPeople = RecordService.sortPeople(people, 'dateOfBirth', true)
+describe('sortPeopleByTwoFields()', function () {
+    it('Sort people by gender and last name ascending', function () {
+        const people = ParseFiles.parsePeople(testPeople);
+        const sortedPeople = RecordService.sortPeopleByTwoFields(people, ['gender', 'lastName'], true)
         expect(sortedPeople[0].lastName).to.be.equal('Jane');
     });
 });

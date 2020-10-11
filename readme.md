@@ -3,7 +3,7 @@
 ## Running
 1. Clone repo
 2. Install dependencies: `npm install`
-3. Run API: `npm start`
+3. Run API: `npm start` - see `package.json` for details
     - This prints out the three required outputs sorted by:
         - gender (females before males) then by last name ascending
         - birth date, ascending
