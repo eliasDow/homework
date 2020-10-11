@@ -1,24 +1,5 @@
-//Read 3 files
-//Parse each file into one collection/array/structure of people objects
 const fs = require('fs').promises;
-
-class Person {
-    // constructor(lastName, firstName, gender, favoriteColor, dateOfBirth) {
-    //     this.lastName = lastName;
-    //     this.firstName = firstName;
-    //     this.gender = gender;
-    //     this.favoriteColor = favoriteColor;
-    //     this.dateOfBirth = dateOfBirth;
-    // }
-
-    constructor(personArray) {
-        this.lastName = personArray[0].trim();
-        this.firstName = personArray[1].trim();
-        this.gender = personArray[2].trim();
-        this.favoriteColor = personArray[3].trim();
-        this.dateOfBirth = personArray[4].trim();
-    }
-}
+const Person = require('./api/components/record/Record');
 
 async function readFile(fileName) {
     const file = await fs.readFile(fileName, 'utf8');
@@ -34,12 +15,39 @@ function parsePeople(separator, fileData) {
     return people;
 }
 
+function sortPeople(people, sortField, ascending = true) {
+    if(sortField === 'dateOfBirth') {
+        return people.sort((a, b) => {
+            if(a.dateOfBirth > b.dateOfBirth) {
+                return ascending ? 1 : -1;
+            } else if(a.dateOfBirth < b.dateOfBirth) {
+                return ascending ? -1 : 1
+            }
+            return 0;
+        });
+    } else {
+        return people.sort((a, b) => {
+            if(a[sortField].localeCompare(b[sortField]) > 0) {
+                return ascending ? 1 : -1;
+            } else if(a[sortField].localeCompare(b[sortField]) < 0) {
+                return ascending ? -1 : 1
+            }
+            return 0;
+        });
+    }
+}
+
 async function run() {
     let file = await readFile('./PeopleFiles/comma.txt');
     file = await readFile('./PeopleFiles/pipe.txt');
     let peeps = parsePeople('|', file);
-    peeps.sort((a, b) => a.lastName.localeCompare(b.lastName));
-    console.log(peeps);
+    let sorted = sortPeople(peeps, 'lastName', true)
+    console.log(sorted);
 }
 run()
 
+module.exports = {
+    parsePeople,
+    readFile,
+    sortPeople
+};

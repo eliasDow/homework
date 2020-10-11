@@ -1,4 +1,7 @@
 Hickory | Hall | Male | red | 03/15/1900
 Smith | John | Male | brown | 02/14/1980
 Doe | Jane | Female | black | 01/02/1990
-Gates | Bill | Male | purple | DateOfBirth
+Gates | Bill | Male | purple | 01/02/2000
+aaa | zzz | Male | purple | 01/02/2100
+zzz | aaa | Male | purple | 01/02/3000
+zzz | abc | Male | purple | 01/02/3000
