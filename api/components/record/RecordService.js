@@ -1,9 +1,9 @@
 function sortPeople(people, sortField, ascending = true) {
     if(sortField === 'dateOfBirth') {
         return people.sort((a, b) => {
-            if(a.dateOfBirth > b.dateOfBirth) {
+            if(new Date(a.dateOfBirth) > new Date(b.dateOfBirth)) {
                 return ascending ? 1 : -1;
-            } else if(a.dateOfBirth < b.dateOfBirth) {
+            } else if(new Date(a.dateOfBirth) < new Date(b.dateOfBirth)) {
                 return ascending ? -1 : 1
             }
             return 0;
@@ -20,18 +20,11 @@ function sortPeople(people, sortField, ascending = true) {
     }
 }
 
-function sortPeopleByTwoFields(people, sortFieldArray, ascending = true) {
+function sortPeopleByTwoFields(people, sortFieldArray) {
     return people.sort((a, b) => {
-        if(a[sortFieldArray[0]].toUpperCase().localeCompare(b[sortFieldArray[0]].toUpperCase()) > 0 ||
-            a[sortFieldArray[1]].toUpperCase().localeCompare(b[sortFieldArray[1]].toUpperCase()) > 0
-        ) {
-            return ascending ? 1 : -1;
-        } else if(a[sortFieldArray[0]].toUpperCase().localeCompare(b[sortFieldArray[0]].toUpperCase()) < 0 ||
-            a[sortFieldArray[1]].toUpperCase().localeCompare(b[sortFieldArray[1]].toUpperCase()) < 0
-        ) {
-            return ascending ? -1 : 1
-        }
-        return 0;
+        const fieldOne = a[sortFieldArray[0]].toUpperCase().localeCompare(b[sortFieldArray[0]].toUpperCase());
+        const fieldTwo = a[sortFieldArray[1]].toUpperCase().localeCompare(b[sortFieldArray[1]].toUpperCase());
+        return fieldOne || fieldTwo;
     });
 }
 

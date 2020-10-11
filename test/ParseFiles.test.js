@@ -11,19 +11,38 @@ const testPeople = [
 
 describe('parsePeople()', function () {
     it('Parse people', function () {      
-        // 2. ACT
         const people = ParseFiles.parsePeople('|', testPeople);
-        // 3. ASSERT
         expect(people[0].lastName).to.be.equal('aaa');
     });
 });
 
 describe('readFile()', function () {
     it('Read file', async function () {
-        // 2. ACT
         const fileName = './PeopleFiles/comma.txt'
         const peopleFromFile = await ParseFiles.readFile(fileName);
-        // 3. ASSERT
-        expect(peopleFromFile[0]).to.be.equal('LastName, FirstName, Female, FavoriteColor, 02/02/2000');
+        expect(peopleFromFile[0]).to.be.equal('UnitTestLastName, FirstName, Female, FavoriteColor, 02/02/2000');
+    });
+});
+
+describe('combinePeople()', function () {
+    it('Combine people function', async function () {
+        const combined = await ParseFiles.combinePeople();
+        expect(combined.length).to.be.greaterThan(0);
+        expect(combined[0].lastName).to.be.equal('UnitTestLastName');
+    });
+});
+
+describe('findSeparator()', function () {
+    it('Test function to find separator | in string', async function () {
+        const separator = ParseFiles.findSeparator('Test | Test');
+        expect(separator).to.be.equal('|');
+    });
+    it('Test function to find separator , in string', async function () {
+        const separator = ParseFiles.findSeparator('Test , Test');
+        expect(separator).to.be.equal(',');
+    });
+    it('Test function to find separator space in string', async function () {
+        const separator = ParseFiles.findSeparator('Test Test');
+        expect(separator).to.be.equal(' ');
     });
 });
