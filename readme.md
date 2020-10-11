@@ -19,6 +19,7 @@
         - `GET localhost:3000/records/name`
         - `GET localhost:3000/records/birthdate`   
         - `GET localhost:3000/records/gender`      
+4. Alternatively run: `npm run output` to just run the output script.
 
 
 ## Testing

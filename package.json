@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "nyc --reporter=text mocha --all",
-    "start": "node api/server.js comma.txt pipe.txt space.txt"
+    "start": "node api/server.js comma.txt pipe.txt space.txt",
+    "output": "node ParseFiles.js comma.txt pipe.txt space.txt"
   },
   "repository": {
     "type": "git",
