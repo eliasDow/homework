@@ -21,6 +21,10 @@ function findSeparator(data) {
     } else return ' '
 }
 
+/**
+ * Parse an array of strings into Person/Record objects
+ * @param {array} fileData - an array of strings
+ */
 function parsePeople(fileData) {
     let people = [];
     for (const person of fileData) {
@@ -33,10 +37,15 @@ function parsePeople(fileData) {
     return people;
 }
 
+/**
+ * Combines all provided input files into one array of People/Records
+ * @param {array} args - if args array is supplied we use it for filenames
+ */
 async function combinePeople(args) {
+    //assumes max of three command line args for files
     const fileNames = args || process.argv.slice(2,5);
     let people = [];
-    const list = await Promise.all(fileNames.map(async file => {
+    const list = await Promise.all(fileNames.map(file => {
         return new Promise(async (resolve) => {
             let fileRead = await readFile('./PeopleFiles/'+file);
             if (fileRead) {

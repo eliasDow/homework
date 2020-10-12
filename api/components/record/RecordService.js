@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {array[Record]} people - array of people
+ * @param {string} sortField - field we want to sort on
+ * @param {boolean} ascending - sorts ascending by default, if set to false it sorts descending
+ */
 function sortPeople(people, sortField, ascending = true) {
     if(sortField === 'dateOfBirth') {
         return people.sort((a, b) => {
@@ -20,6 +26,11 @@ function sortPeople(people, sortField, ascending = true) {
     }
 }
 
+/**
+ * Assumes we only want to sort on two string fields
+ * @param {array} people - array of people data to sort
+ * @param {array} sortFieldArray - array of length two to represent the two fields we want to sort on
+ */
 function sortPeopleByTwoFields(people, sortFieldArray) {
     return people.sort((a, b) => {
         const fieldOne = a[sortFieldArray[0]].toUpperCase().localeCompare(b[sortFieldArray[0]].toUpperCase());

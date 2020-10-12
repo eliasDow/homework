@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "nyc --reporter=text mocha --all",
+    "test": "nyc --reporter=text mocha",
     "start": "node api/server.js comma.txt pipe.txt space.txt",
     "output": "node ParseFiles.js comma.txt pipe.txt space.txt"
   },

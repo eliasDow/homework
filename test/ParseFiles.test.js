@@ -22,6 +22,11 @@ describe('readFile()', function () {
         const peopleFromFile = await ParseFiles.readFile(fileName);
         expect(peopleFromFile[0]).to.be.equal('UnitTestLastName, FirstName, Female, FavoriteColor, 02/02/2000');
     });
+    it('Fails to open file', async function () {
+        const fileName = './PeopleFiles/nofile.txt'
+        const res = await ParseFiles.readFile(fileName);
+        expect(res).to.be.false;
+    });
 });
 
 describe('combinePeople()', function () {
