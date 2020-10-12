@@ -20,6 +20,7 @@
         - `GET localhost:3000/records/birthdate`   
         - `GET localhost:3000/records/gender`      
 4. Alternatively run: `npm run output` to just run the output script.
+    - or run: `node ParseFiles.js file1 file2 file3` 
 
 
 ## Testing
@@ -29,3 +30,4 @@ Run: `npm test` - This outputs results of test and coverage per file.
 ## Assumptions
 - input date formats are in MM/DD/YYYY format
 - data resets to what's in input files on each run of server
+- CLI program takes a max of three input files (can be easily changed if needed)
